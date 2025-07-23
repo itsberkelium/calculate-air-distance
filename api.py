@@ -79,6 +79,6 @@ def get_version():
     return {"version": "1.0.0", "description": "Distance Calculator API version 1.0.0"}
 @app.get("/docs")
 def get_docs():
-    if os.environ.get("ENV", "development") == "production":
+    if os.getenv("ENV", "development").lower() == "production":
         raise HTTPException(status_code=404, detail="Not found")
     return {"message": "API documentation is available at /docs"}
